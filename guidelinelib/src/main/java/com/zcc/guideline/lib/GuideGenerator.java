@@ -33,6 +33,7 @@ public class GuideGenerator {
     private SharedPreferences mSp;
 
     private boolean startVersionControl = false;
+    private boolean isHollowClickOnly = false;
 
 
     private GuideGenerator(Activity context) {
@@ -216,5 +217,10 @@ public class GuideGenerator {
             mSp = context.getSharedPreferences(GUIDE_GENNERATOR_SP, Context.MODE_PRIVATE);
         }
         return mSp.getBoolean(pageTag, false);
+    }
+
+    public GuideGenerator setHollowDiscClickOnly(boolean enabled) {
+        this.isHollowClickOnly = enabled;
+        return this;
     }
 }
