@@ -182,6 +182,7 @@ public class GuideGenerator {
         pos[0] = pos[0] + bindedView.getWidth() / 2;
         pos[1] = pos[1] + bindedView.getHeight() / 2;
         guideView.setPos(pos);
+        guideView.setTargetViewParam(bindedView.getWidth(), bindedView.getHeight(), pos[0], pos[1]);
     }
 
     public GuideGenerator setHollowOffSet(int xOffset, int yOffset) {

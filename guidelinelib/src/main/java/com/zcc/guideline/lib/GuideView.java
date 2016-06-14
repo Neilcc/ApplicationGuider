@@ -41,6 +41,11 @@ public class GuideView extends View {
     protected float hollowY = -1;
     protected int xOffset = 0;
     protected int yOffset = 0;
+
+    protected int targetX = 0;
+    protected int targetY = 0;
+    protected int targetWidth = 0;
+    protected int targetHeight = 0;
     protected int[] targetCenterPos;
 
     protected float padding;
@@ -111,6 +116,13 @@ public class GuideView extends View {
         }
     }
 
+    public void setTargetViewParam(int targetWidth, int targetHeight, int targetX, int targetY) {
+        this.targetWidth = targetWidth;
+        this.targetHeight = targetHeight;
+        this.targetX = targetX;
+        this.targetY = targetY;
+    }
+
     private void init() {
         setBackgroundColor(bgColor);
         mHollowPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -146,17 +158,25 @@ public class GuideView extends View {
             mBgCanvas.drawBitmap(hollowBitmap, hollowX + xOffset, hollowY + yOffset, mMainPaint);
             if (tipBitmap != null) {
                 if (tipX == -1 && tipY == -1) {
-                    calculateTipPos();
+                    calculateTipPosWithHollow();
                 }
                 mBgCanvas.drawBitmap(tipBitmap, tipX, tipY, mMainPaint);
             }
+            canvas.drawBitmap(mOverlay, 0, 0, mMainPaint);
+        } else if (tipBitmap != null) {
+            setUpPaintTools();
+            mBgCanvas.drawRect(0.0f, 0.0f, mBgCanvas.getWidth(), mBgCanvas.getHeight(), mBgPaintWithBgColor);
+            if (tipX == -1 && tipY == -1) {
+                calculateTipPosNoHollow();
+            }
+            mBgCanvas.drawBitmap(tipBitmap, tipX, tipY, mMainPaint);
             canvas.drawBitmap(mOverlay, 0, 0, mMainPaint);
         } else {
             canvas.drawColor(bgColor);
         }
     }
 
-    private void calculateTipPos() {
+    private void calculateTipPosWithHollow() {
         tipX = hollowX;
         tipY = hollowY;
         switch (tipPostion) {
@@ -168,6 +188,27 @@ public class GuideView extends View {
                 break;
             case RIGHT:
                 tipX += hollowBitmap.getWidth();
+                break;
+            case LEFT:
+                tipX -= tipBitmap.getWidth();
+                break;
+        }
+        tipX = tipX + Utils.dip2px(tipPaddingLeft, getContext()) - Utils.dip2px(tipPaddingRight, getContext());
+        tipY = tipY + Utils.dip2px(tipPaddingTop, getContext()) - Utils.dip2px(tipPaddingBottom, getContext());
+    }
+
+    private void calculateTipPosNoHollow() {
+        tipX = targetX;
+        tipY = targetY;
+        switch (tipPostion) {
+            case TOP:
+                tipY -= tipBitmap.getHeight();
+                break;
+            case BOTTOM:
+                tipY += targetHeight;
+                break;
+            case RIGHT:
+                tipX += targetWidth;
                 break;
             case LEFT:
                 tipX -= tipBitmap.getWidth();

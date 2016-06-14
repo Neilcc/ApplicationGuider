@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         guideTarget = findViewById(R.id.guide_target);
         GuideGenerator.init(this)
-                .setHollowImageRes(R.drawable.u_biz_guide_home_page_hollow)
+//                .setHollowImageRes(R.drawable.u_biz_guide_home_page_hollow)
                 .setTipViewRes(R.drawable.u_biz_guide_home_page_tip, GuideView.Position.TOP, 15, 0, 0, 0)
                 .setTargetView(guideTarget)
                 .show();
