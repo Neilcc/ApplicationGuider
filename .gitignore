@@ -10,3 +10,4 @@
 .gradle/*
 .hg/*
 .hg
+.hg/sourcetreeconfig
