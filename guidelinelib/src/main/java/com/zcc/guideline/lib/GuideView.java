@@ -245,6 +245,24 @@ public class GuideView extends View {
         this.yOffset = yOffset;
     }
 
+    @Override
+    protected void onDetachedFromWindow() {
+        freeBitmaps();
+        super.onDetachedFromWindow();
+    }
+
+    private void freeBitmaps() {
+        if (mOverlay != null) {
+            mOverlay.recycle();
+            mOverlay = null;
+        }
+
+        if (tipBitmap != null) {
+            tipBitmap.recycle();
+            tipBitmap = null;
+        }
+    }
+
     public static enum Position {
         TOP, BOTTOM, RIGHT, LEFT
     }
