@@ -124,7 +124,7 @@ public class GuideView extends View {
     }
 
     private void init() {
-        setBackgroundColor(bgColor);
+        //setBackgroundColor(bgColor);
         mHollowPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mHollowPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
     }
