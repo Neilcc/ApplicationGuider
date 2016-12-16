@@ -1,5 +1,5 @@
-# GuideLine
-#### A guide line (guide overlay /guide view) lib for Android applications
+# ApplicationGuider
+#### A applicationGuider guide line (guide overlay /guide view) lib for Android applications
 
 ## How to use
 
