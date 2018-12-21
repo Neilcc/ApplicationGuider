@@ -13,3 +13,20 @@
 
 ```
 
+## Compile gradle :
+
+1. add repository
+
+```
+  maven{
+           url "https://dl.bintray.com/zccneil/BinaryStar/"
+       }
+```
+
+```
+
+  compile 'com.zcc.applicationguider:guidelinelib:1.0.0'
+
+```
+
+

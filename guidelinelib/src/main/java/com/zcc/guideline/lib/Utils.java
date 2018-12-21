@@ -10,11 +10,6 @@ import android.util.TypedValue;
  */
 public class Utils {
 
-    /**
-     * 获取版本名
-     *
-     * @return 当前App 版本名
-     */
     public static String getVersionName(Context context) {
         if (!TextUtils.isEmpty(DataHolder.VERSION_NAME)) {
             return DataHolder.VERSION_NAME;
