@@ -1,6 +1,10 @@
 # ApplicationGuider
 #### A applicationGuider guide line (guide overlay /guide view) lib for Android applications
 
+## Example
+
+![img](https://github.com/Neilcc/ApplicationGuider/blob/master/photos/result.png)
+
 ## How to use
 
 ```
